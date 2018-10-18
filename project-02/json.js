@@ -1,3 +1,5 @@
+const MAX_ARTICLE_NUMBER = 12;
+
 function findImage (multimedia, format) {
     for(let i = 0; i < multimedia.length; i++) {
         const currentImage = multimedia[i];
@@ -8,8 +10,12 @@ function findImage (multimedia, format) {
 }
 
 function extractArticleData (article) {
+    console.log(article);
     const abstract = article.abstract;
     const multimedia = findImage(article.multimedia, 'superJumbo');
+    if(!multimedia) {
+        return null;
+    }
     const imageUrl = multimedia.url;
     return {
         abstract: abstract,
@@ -34,11 +40,16 @@ $(function () {
         method: 'GET'
     }).done(function(data) {
 
-        const result = data.results[0];
-        const articleData = extractArticleData(result);
-        const articleNode = $('article')[0];
+        for(let i = 0; i < data.results.length && i < MAX_ARTICLE_NUMBER; i ++) {
+            const result = data.results[i];
+            const articleData = extractArticleData(result);
+            if(articleData) {
+                const articleNode = $('<article><img /><p></p></article>');
+                $('#articleContainer').append(articleNode);
+                renderArticle(articleData, articleNode);
+            }
+        }
 
-        renderArticle(articleData, articleNode);
 
     }).fail(function(err) {
         throw err;

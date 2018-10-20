@@ -1,3 +1,32 @@
+@import "reset";
+@import "fonts";
+@import "variables";
+
 body {
+  font-size: $font-size;
+  font-family: "Open Sans";
+  font-weight: 100;
   background: black;
+  color: $base-font-color;
 }
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    height: 50vw;
+  }
+
+  select {
+    width: auto;
+  }
+}
+
+
+footer {
+  color: $footer-font-color;
+  text-align: center;
+}
+

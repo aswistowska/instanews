@@ -28,6 +28,8 @@ function renderArticle(articleData, articleNode) {
     $("p", articleNode).text(articleData.abstract);
 }
 
+
+/*
 $(function () {
     let url = "https://api.nytimes.com/svc/topstories/v2/home.json";
 
@@ -55,3 +57,4 @@ $(function () {
         throw err;
     });
 });
+*/

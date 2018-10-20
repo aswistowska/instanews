@@ -3,13 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>InstaNews</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div id="articleContainer">
-
-    </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-<script src="./js/json.js"></script>
+<header>
+    <img src="/images/nyt-logo.svg">
+    <label for="nyt_section_select">Choose a section:</label>
+    <select id="nyt_section_select">
+        <option value="">Sections...</option>
+        <option value="home">Home</option>
+        <option value="opinion">Opinion</option>
+        <option value="world">World</option>
+        <option value="national">National</option>
+        <option value="politics">Politics</option>
+        <option value="upshot">Upshot</option>
+        <option value="nyregion">Nyregion</option>
+        <option value="business">Business</option>
+        <option value="technology">Technology</option>
+        <option value="science">Science</option>
+        <option value="health">Health</option>
+        <option value="sports">Sports</option>
+        <option value="arts">Arts</option>
+        <option value="books">Books</option>
+        <option value="movies">Movies</option>
+        <option value="theater">Theater</option>
+        <option value="sundayreview">Sundayreview</option>
+        <option value="fashion">Fashion</option>
+        <option value="tmagazine">Tmagazine</option>
+        <option value="food">Food</option>
+        <option value="travel">Travel</option>
+        <option value="magazine">Magazine</option>
+        <option value="realestate">Realestate</option>
+        <option value="automobiles">Automobiles</option>
+        <option value="obituaries">Obituaries</option>
+        <option value="insider">Insider</option>
+    </select>
+</header>
+<div id="articleContainer">
+</div>
+<footer>
+    <p>© Copyright 2016 INSTANEWS</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="/js/json.min.js"></script>
 </body>
 </html>

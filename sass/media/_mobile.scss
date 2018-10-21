@@ -17,20 +17,28 @@ header {
   align-items: center;
   justify-content: center;
   flex: 1;
-  transition: all 1s;
+  transition: all $transition-time;
   padding: 100px 50px;
 
   img {
     height: 50vw;
+    max-height: 240px;
     align-self: center;
+    transition: all $transition-time;
   }
 
-  label {
-    padding: $font-size;
-  }
-  select {
-    width: auto;
-    background-color: #ffffff;
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      padding: $font-size 0;
+    }
+    select {
+      width: auto;
+      background-color: #ffffff;
+      align-self: center;
+    }
   }
 }
 
@@ -40,17 +48,21 @@ footer {
   padding: 3 * $font-size;
 }
 
+body.loading {
+  #articleContainer {
+    background: url("/images/ajax-loader.gif") no-repeat top;
+    background-size: 100px;
+  }
+}
+
 body.article-view {
   header {
     flex: 0 1 auto;
-    padding: 50px;
+    padding: $article-view-header-padding;
   }
 
   #articleContainer {
     display: grid;
-    & .loading {
-      display: none;
-    }
     grid-template-columns: 100%;
     grid-template-rows: repeat(12, 100vw);
 

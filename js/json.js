@@ -10,7 +10,6 @@ function findImage(multimedia, format) {
 }
 
 function extractArticleData(article) {
-    console.log(article);
     const abstract = article.abstract;
     const multimedia = findImage(article.multimedia, "superJumbo");
     if (!multimedia) {
@@ -41,6 +40,7 @@ function loadArticles(section) {
         url: url,
         method: "GET"
     }).done(function (data) {
+        $("body").removeClass("loading");
         $("#articleContainer").empty();
         let counter = 0;
         for (let i = 0; i < data.results.length && counter < MAX_ARTICLE_NUMBER; i++) {

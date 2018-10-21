@@ -17,6 +17,8 @@ header {
   align-items: center;
   justify-content: center;
   flex: 1;
+  transition: all 1s;
+  padding: 100px 50px;
 
   img {
     height: 50vw;
@@ -46,6 +48,9 @@ body.article-view {
 
   #articleContainer {
     display: grid;
+    & .loading {
+      display: none;
+    }
     grid-template-columns: 100%;
     grid-template-rows: repeat(12, 100vw);
 
@@ -63,5 +68,6 @@ body.article-view {
       }
     }
   }
-
 }
+
+

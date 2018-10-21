@@ -89,7 +89,7 @@ gulp.task("browser-sync", function() {
 
 gulp.task("watch", function() {
     gulp.watch("js/*.js", gulp.series("scripts"));
-    gulp.watch("sass/*.scss", gulp.series("sass"));
+    gulp.watch("sass/**/*.scss", gulp.series("sass"));
     gulp.watch("*.html", gulp.series("html"));
     gulp.watch("./assets/images/*", gulp.series("images"));
     gulp.watch("./assets/fonts/*", gulp.series("fonts"));

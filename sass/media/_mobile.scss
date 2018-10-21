@@ -1,0 +1,67 @@
+@import "../variables";
+
+body {
+  font-size: $font-size;
+  font-family: "Open Sans";
+  font-weight: 100;
+  background: black;
+  color: $base-font-color;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+
+  img {
+    height: 50vw;
+    align-self: center;
+  }
+
+  label {
+    padding: $font-size;
+  }
+  select {
+    width: auto;
+    background-color: #ffffff;
+  }
+}
+
+footer {
+  color: $footer-font-color;
+  text-align: center;
+  padding: 3 * $font-size;
+}
+
+body.article-view {
+  header {
+    flex: 0 1 auto;
+    padding: 50px;
+  }
+
+  #articleContainer {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(12, 100vw);
+
+    article {
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+
+      p {
+        padding: $font-size;
+        line-height: 1.5;
+        text-align: justify;
+        background-color: rgba(0, 0, 0, .5);
+      }
+    }
+  }
+
+}

@@ -24,22 +24,14 @@ function extractArticleData(article) {
 }
 
 function renderArticle(articleData, articleNode) {
-    $("img", articleNode).attr("src", articleData.imageUrl);
+    articleNode.css("background-image", `url(${articleData.imageUrl})`);
     $("p", articleNode).text(articleData.abstract);
 }
 
-$(function () {
-    const sectionSelect = $("#nyt_section_select");
-    sectionSelect.on("change", function () {
-        window.location.hash = sectionSelect.val();
-    });
-    if(window.location.hash) {
-        sectionSelect.val(window.location.hash.substr(1)).change();
-    }
-});
-/*
-$(function () {
-    let url = "https://api.nytimes.com/svc/topstories/v2/home.json";
+function loadArticles(section) {
+    $("body").addClass("loading").addClass("article-view");
+
+    let url = `https://api.nytimes.com/svc/topstories/v2/${section}.json`;
 
     url += "?" + $.param({
         "api-key": "b0d2e78ec76340b08e94f63c93132731"
@@ -49,12 +41,14 @@ $(function () {
         url: url,
         method: "GET"
     }).done(function (data) {
-
-        for (let i = 0; i < data.results.length && i < MAX_ARTICLE_NUMBER; i++) {
+        $("#articleContainer").empty();
+        let counter = 0;
+        for (let i = 0; i < data.results.length && counter < MAX_ARTICLE_NUMBER; i++) {
             const result = data.results[i];
             const articleData = extractArticleData(result);
             if (articleData) {
-                const articleNode = $("<article><img /><p></p></article>");
+                counter ++;
+                const articleNode = $("<article><p></p></article>");
                 $("#articleContainer").append(articleNode);
                 renderArticle(articleData, articleNode);
             }
@@ -64,5 +58,26 @@ $(function () {
     }).fail(function (err) {
         throw err;
     });
+}
+
+function hideArticles() {
+    $("body").removeClass("loading").removeClass("article-view");
+    $("#articleContainer").empty();
+}
+
+
+$(function () {
+    const sectionSelect = $("#nyt_section_select");
+    sectionSelect.on("change", function () {
+        const sectionSelectValue = sectionSelect.val();
+        window.location.hash = sectionSelectValue;
+        if(sectionSelectValue) {
+            loadArticles(sectionSelectValue);
+        } else {
+            hideArticles();
+        }
+    });
+    if(window.location.hash) {
+        sectionSelect.val(window.location.hash.substr(1)).change();
+    }
 });
-*/

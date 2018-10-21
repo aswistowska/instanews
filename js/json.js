@@ -28,7 +28,15 @@ function renderArticle(articleData, articleNode) {
     $("p", articleNode).text(articleData.abstract);
 }
 
-
+$(function () {
+    const sectionSelect = $("#nyt_section_select");
+    sectionSelect.on("change", function () {
+        window.location.hash = sectionSelect.val();
+    });
+    if(window.location.hash) {
+        sectionSelect.val(window.location.hash.substr(1)).change();
+    }
+});
 /*
 $(function () {
     let url = "https://api.nytimes.com/svc/topstories/v2/home.json";

@@ -1,7 +1,5 @@
 @import "variables";
 
-
-
 body {
   font-size: $font-size;
   font-family: "Open Sans";
@@ -43,7 +41,7 @@ header {
     }
   }
 
-  @media screen and (min-width: $tablet-size){
+  @media screen and (min-width: $tablet-size) {
     flex-direction: row;
     form {
       select {
@@ -52,7 +50,7 @@ header {
     }
   }
 
-  @media screen and (min-width: $desktop-size){
+  @media screen and (min-width: $desktop-size) {
     justify-content: flex-start;
   }
 }
@@ -75,7 +73,7 @@ body.article-view {
     flex: 0 1 auto;
     padding: $article-view-header-padding;
 
-    @media screen and (min-width: $tablet-size){
+    @media screen and (min-width: $tablet-size) {
       padding: $article-view-header-padding / 2;
 
       img {
@@ -118,12 +116,12 @@ body.article-view {
       }
     }
 
-    @media screen and (min-width: $tablet-size){
+    @media screen and (min-width: $tablet-size) {
       grid-template-columns: 33% 34% 33%;
       grid-auto-rows: 55vw;
     }
 
-    @media screen and (min-width: $desktop-size){
+    @media screen and (min-width: $desktop-size) {
       grid-template-columns: repeat(4, 25%);
       grid-auto-rows: 40vw;
     }

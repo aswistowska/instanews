@@ -9,9 +9,9 @@ const gulp = require("gulp"),
     cssnano = require("gulp-cssnano");
 
 
-gulp.task("sass", function(done) {
+gulp.task("sass", function (done) {
     gulp
-        .src("./sass/style.scss", { sourcemaps: true })
+        .src("./sass/style.scss", {sourcemaps: true})
         .pipe(prettyError())
         .pipe(sass())
         .pipe(
@@ -26,7 +26,7 @@ gulp.task("sass", function(done) {
         .on("end", done);
 });
 
-gulp.task("eslint", function(done) {
+gulp.task("eslint", function (done) {
     return gulp
         .src(["./js/*.js"])
         // Also need to use it here...
@@ -37,7 +37,7 @@ gulp.task("eslint", function(done) {
         .on("end", done);
 });
 
-gulp.task("scripts", gulp.series("eslint", function() {
+gulp.task("scripts", gulp.series("eslint", function () {
     return gulp
         .src("./js/*.js")
         .pipe(uglify())
@@ -49,7 +49,7 @@ gulp.task("scripts", gulp.series("eslint", function() {
         .pipe(gulp.dest("./build/js"));
 }));
 
-gulp.task("html", function(done) {
+gulp.task("html", function (done) {
     gulp
         .src("./*.html")
         .pipe(prettyError())
@@ -57,7 +57,7 @@ gulp.task("html", function(done) {
         .on("end", done);
 });
 
-gulp.task("images", function(done) {
+gulp.task("images", function (done) {
     gulp
         .src("./assets/images/*")
         .pipe(prettyError())
@@ -65,7 +65,7 @@ gulp.task("images", function(done) {
         .on("end", done);
 });
 
-gulp.task("fonts", function(done) {
+gulp.task("fonts", function (done) {
     gulp
         .src("./assets/fonts/*")
         .pipe(prettyError())
@@ -75,7 +75,7 @@ gulp.task("fonts", function(done) {
 
 // Set-up BrowserSync and watch
 
-gulp.task("browser-sync", function() {
+gulp.task("browser-sync", function () {
     browserSync.init({
         server: {
             baseDir: "./build"
@@ -87,7 +87,7 @@ gulp.task("browser-sync", function() {
         .on("change", browserSync.reload);
 });
 
-gulp.task("watch", function() {
+gulp.task("watch", function () {
     gulp.watch("js/*.js", gulp.series("scripts"));
     gulp.watch("sass/**/*.scss", gulp.series("sass"));
     gulp.watch("*.html", gulp.series("html"));

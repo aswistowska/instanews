@@ -51,7 +51,7 @@ function loadArticles(section) {
             const result = data.results[i];
             const articleData = extractArticleData(result);
             if (articleData) {
-                counter ++;
+                counter++;
                 const articleNode = $("<article><p></p></article>");
                 $("#articleContainer").append(articleNode);
                 renderArticle(articleData, articleNode);
@@ -75,13 +75,13 @@ $(function () {
     sectionSelect.on("change", function () {
         const sectionSelectValue = sectionSelect.val();
         window.location.hash = sectionSelectValue;
-        if(sectionSelectValue) {
+        if (sectionSelectValue) {
             loadArticles(sectionSelectValue);
         } else {
             hideArticles();
         }
     });
-    if(window.location.hash) {
+    if (window.location.hash) {
         sectionSelect.val(window.location.hash.substr(1)).change();
     }
 });

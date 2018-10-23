@@ -1,4 +1,6 @@
-@import "../variables";
+@import "variables";
+
+
 
 body {
   font-size: $font-size;
@@ -40,6 +42,19 @@ header {
       align-self: center;
     }
   }
+
+  @media screen and (min-width: $tablet-size){
+    flex-direction: row;
+    form {
+      select {
+        align-self: start;
+      }
+    }
+  }
+
+  @media screen and (min-width: $desktop-size){
+    justify-content: flex-start;
+  }
 }
 
 footer {
@@ -59,25 +74,58 @@ body.article-view {
   header {
     flex: 0 1 auto;
     padding: $article-view-header-padding;
+
+    @media screen and (min-width: $tablet-size){
+      padding: $article-view-header-padding / 2;
+
+      img {
+        height: 6 * $font-size;
+        padding-right: $article-view-header-padding;
+      }
+    }
   }
 
   #articleContainer {
     display: grid;
+    min-height: 100px;
     grid-template-columns: 100%;
-    grid-template-rows: repeat(12, 100vw);
+    grid-auto-rows: 100vw;
 
     article {
       background-size: cover;
       background-position: center;
       display: flex;
       align-items: flex-end;
+      cursor: pointer;
+      transition: all $transition-time;
+      background-blend-mode: difference;
+      &:hover {
+
+        border-top-left-radius: 50%;
+        background-blend-mode: saturation;
+        p {
+          background: #ed0058;
+          margin-bottom: 2* $font-size;
+        }
+      }
 
       p {
         padding: $font-size;
         line-height: 1.5;
         text-align: justify;
         background-color: rgba(0, 0, 0, .5);
+        transition: all $transition-time;
       }
+    }
+
+    @media screen and (min-width: $tablet-size){
+      grid-template-columns: 33% 34% 33%;
+      grid-auto-rows: 55vw;
+    }
+
+    @media screen and (min-width: $desktop-size){
+      grid-template-columns: repeat(4, 25%);
+      grid-auto-rows: 40vw;
     }
   }
 }

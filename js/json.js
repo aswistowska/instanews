@@ -1,4 +1,5 @@
 const MAX_ARTICLE_NUMBER = 12;
+const API_KEY = "b0d2e78ec76340b08e94f63c93132731";
 
 function findImage(multimedia, format) {
     for (let i = 0; i < multimedia.length; i++) {
@@ -18,22 +19,25 @@ function extractArticleData(article) {
     const imageUrl = multimedia.url;
     return {
         abstract: abstract,
-        imageUrl: imageUrl
+        imageUrl: imageUrl,
+        url: article.url
     };
 }
 
 function renderArticle(articleData, articleNode) {
-    articleNode.css("background-image", `url(${articleData.imageUrl})`);
+    articleNode.css("background-image", `linear-gradient(black, black), url(${articleData.imageUrl})`);
     $("p", articleNode).text(articleData.abstract);
+    articleNode.on("click", function () {
+        window.open(articleData.url, "_blank");
+    });
 }
 
 function loadArticles(section) {
     $("body").addClass("loading").addClass("article-view");
 
     let url = `https://api.nytimes.com/svc/topstories/v2/${section}.json`;
-
     url += "?" + $.param({
-        "api-key": "b0d2e78ec76340b08e94f63c93132731"
+        "api-key": API_KEY
     });
 
     $.ajax({

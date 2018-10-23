@@ -1,5 +1,7 @@
 # Instanews-App
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/6541933f1540f655489b/maintainability)](https://codeclimate.com/github/aswistowska/instanews/maintainability)
+
 Project: Instanews RED ACADEMY
 
 An Web Application to display news fetch from New York Time API.

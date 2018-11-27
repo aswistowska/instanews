@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 body {
   font-size: $font-size;
@@ -41,7 +42,7 @@ header {
     }
   }
 
-  @media screen and (min-width: $tablet-size) {
+  @include tablet {
     flex-direction: row;
     form {
       select {
@@ -50,7 +51,7 @@ header {
     }
   }
 
-  @media screen and (min-width: $desktop-size) {
+  @include desktop {
     justify-content: flex-start;
   }
 }
@@ -73,7 +74,7 @@ body.article-view {
     flex: 0 1 auto;
     padding: $article-view-header-padding;
 
-    @media screen and (min-width: $tablet-size) {
+    @include tablet{
       padding: $article-view-header-padding / 2;
 
       img {
@@ -116,12 +117,12 @@ body.article-view {
       }
     }
 
-    @media screen and (min-width: $tablet-size) {
+    @include tablet{
       grid-template-columns: 33% 34% 33%;
       grid-auto-rows: 55vw;
     }
 
-    @media screen and (min-width: $desktop-size) {
+    @include desktop{
       grid-template-columns: repeat(4, 25%);
       grid-auto-rows: 40vw;
     }

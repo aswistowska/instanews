@@ -1,5 +1,5 @@
 const MAX_ARTICLE_NUMBER = 12;
-const API_KEY = "b0d2e78ec76340b08e94f63c93132731";
+const API_KEY = "0751ffff01d7a70710354972fa0ad4a9";
 
 document.addEventListener("DOMContentLoaded", function () {
     function findImage(multimedia, format) {
